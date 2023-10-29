@@ -1,5 +1,7 @@
 # SENEC.Home V3 hybrid Grafana monitor
 
+<img src="grafana-dashboard-1.png" width="300"> <img src="grafana-dashboard-2.png" width="300">
+
 Dieses Repo ist nur eine kleine Sammlung an Infos,
 um ein Monitor via Grafana für SENEC.Home V3 hybrid/duo aufzubauen.
 
@@ -12,6 +14,8 @@ Aufgebaut habe ich das mit:
 - Docker Image: graphite (Datenbank)
 - SD Card
 - SSD Disk
+  
+<img src="orange-pi-zero2.png" width="300"> <img src="orange-pi-console-1.png" width="300">
 
 Die SDCard wird zum Booten des OrangePi verwendet. Die gesamte Installation erfolgte im ersten Schritt auf der SDCard.
 In einem späteren Schritt, habe ich diese auf die SSD komplett kopiert, das Filesystem erweitert, einen neue ID für die SSD vergeben und in der Bootconfig (/boot/...) das Root-FS auf die SSD gestellt. Grund ist, dass eine SSD für die vielen Schreibzugriffe optimiert ist und eine SDCard nach kurzer Zeit kaputt geht.
@@ -89,6 +93,8 @@ Als IP für die Datensource kann ich nicht localhost nehmen, da Grafana oder gra
 **Lösung**: die IP von docker nutzen 172.17.0.1 (siehe grafana-data-sources.png)</br>
 Alle docker instancen, nutzen ein eigenes Netz im Bereich 172.17.x.x was
 durch docker selbst angelegt wurde.
+
+<img src="grafana-data-sources.png" width="300">
 
 Das Dashboard von Grafana ist normaler erst nach Login erreichbar. Um es ohne Login (readonly) zu erreichen, muss es öffentlich gemacht werden.</br>
 Das muss innerhalb des Containers von grafana gemacht aktiviert werden.
