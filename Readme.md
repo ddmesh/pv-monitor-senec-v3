@@ -1,6 +1,6 @@
 # SENEC.Home V3 hybrid Grafana monitor
 
-<img src="grafana-dashboard-1.png" width="300"> <img src="grafana-dashboard-2.png" width="300">
+<img src="images/grafana-dashboard-1.png" width="300"> <img src="images/grafana-dashboard-2.png" width="300">
 
 Dieses Repo ist nur eine kleine Sammlung an Infos,
 um ein Monitor via Grafana für SENEC.Home V3 hybrid/duo aufzubauen.
@@ -14,8 +14,8 @@ Aufgebaut habe ich das mit:
 - Docker Image: graphite (Datenbank)
 - SD Card
 - SSD Disk
-  
-<img src="orange-pi-zero2.png" width="300"> <img src="orange-pi-console-1.png" width="300">
+
+<img src="images/orange-pi-zero2.png" width="300"> <img src="images/orange-pi-console-1.png" width="300">
 
 Die SDCard wird zum Booten des OrangePi verwendet. Die gesamte Installation erfolgte im ersten Schritt auf der SDCard.
 In einem späteren Schritt, habe ich diese auf die SSD komplett kopiert, das Filesystem erweitert, einen neue ID für die SSD vergeben und in der Bootconfig (/boot/...) das Root-FS auf die SSD gestellt. Grund ist, dass eine SSD für die vielen Schreibzugriffe optimiert ist und eine SDCard nach kurzer Zeit kaputt geht.
@@ -80,7 +80,7 @@ grafana-cli admin reset-admin-password "admin"
 Wenn Graphana läuft, muss dort noch das Plugin "Graphite" installiert werden, damit dieses als
 Data-Source verfügbar ist.
 - Plugin Graphite installieren
-- Datasource konfigurieren (grafana-data-sources.png)
+- Datasource konfigurieren (images/grafana-data-sources.png)
 - Configuration-Preferences "Home Dashboard" wählen damit es als default erscheint
 
 ### Konfiguration
@@ -90,11 +90,11 @@ die Daten in welcher Auflösung gespeichert werden, sind in *graphite-data/graph
 
 Als IP für die Datensource kann ich nicht localhost nehmen, da Grafana oder graphite im docker laufen und ihr eigenes localhost haben.
 
-**Lösung**: die IP von docker nutzen 172.17.0.1 (siehe grafana-data-sources.png)</br>
+**Lösung**: die IP von docker nutzen 172.17.0.1 (siehe images/grafana-data-sources.png)</br>
 Alle docker instancen, nutzen ein eigenes Netz im Bereich 172.17.x.x was
 durch docker selbst angelegt wurde.
 
-<img src="grafana-data-sources.png" width="300">
+<img src="images/grafana-data-sources.png" width="300">
 
 Das Dashboard von Grafana ist normaler erst nach Login erreichbar. Um es ohne Login (readonly) zu erreichen, muss es öffentlich gemacht werden.</br>
 Das muss innerhalb des Containers von grafana gemacht aktiviert werden.
